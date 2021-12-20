@@ -5,6 +5,7 @@ from statistics import mean
 import numpy as np
 
 
+
 #Addition function
 var1=int(input('Enter a number: '))
 var2=int(input('Enter another number: '))
