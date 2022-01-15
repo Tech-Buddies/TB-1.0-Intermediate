@@ -54,9 +54,21 @@ def decor():
     
 #=====================================================================
 
-def acceptInput1():
+def recurse():
+    retry = True
+    print(''' Do you still want to perform the same operation again?
+         ''')
+    selct = input("\nInput Yes or No!").lower()
+    if selct.startswith("n"):
+        retry = False
+    print(retry)
+    return retry
+
+#=====================================================================
+
+def acceptInput1(name):
     
-    print("""\n\n\nHello friend! please input the numbers you will like to work on.
+    print(f"""\n\n\nHello friend! please input the numbers you will like {name}.
     Input different values on separate line.
     Remember, you are allowed to put negative numbers e.g (-5).
     When you are done with all your values, please press the enter key or type 'done'.
@@ -81,8 +93,8 @@ def acceptInput1():
 
 #======================================================================
 
-def acceptInput2():
-    print("""\n\n\nHello friend! please input the numbers you will like to work on.
+def acceptInput2(name):
+    print(f"""\n\n\nHello friend! please input the numbers you will like to {name}.
     Input different values on separate line.
     Remember, you are allowed to put negative numbers e.g (-5).
     When you are done with all your values, please press the enter key or type 'done'.
@@ -152,8 +164,9 @@ def add():
     --------
     The sum of [1,2,3,5] = 11
     ''')
-    
-    x = acceptInput1()
+
+    name = "add"
+    x = acceptInput1(name)
     sumAnswer = sum(x)
     print("The sum of {0} = {1}".format(x, sumAnswer))
 
@@ -172,8 +185,9 @@ def subtract():
     --------
      The difference between the set of numbers [1,2,3,5] = 1 - 2 - 3 -5 = -9.0
     ''')
-    
-    x = acceptInput1()
+
+    name = "substract"
+    x = acceptInput1(name)
     subAnswer = reduce(lambda x, y: x - y, x)
     print("The difference between the set of numbers {0}= {1:.2f}".format(x, subAnswer))
 
@@ -191,8 +205,9 @@ def multiply():
     --------
      The product of the set of numbers [1,2,3,5] = 1 x 2 x 3 x 5 = 30.0
     ''')
-    
-    x = acceptInput1()
+
+    name = "multiply"
+    x = acceptInput1(name)
     multAnswer = reduce(lambda x, y: x*y, x)
     print("The product of the set of numbers {0} = {1:.2f}".format(x,multAnswer))
 
@@ -209,16 +224,18 @@ def divide():
     --------
      The product of the set of numbers [1,2,3,5] = 1 / 2 / 3 / 5 = 1/30.0 = 0.03
     ''')
-    
-    x = acceptInput2()
+
+    name = "divide"
+    x = acceptInput2(name)
     divAnswer = reduce(lambda x, y: x/y, x)
     print("The division of the set of numbers {0} = {1:.2f}".format(x,divAnswer))
 
 #===========================================================================#
 
 def simple_avg():
-    
-    x = acceptInput1()
+
+    name = "find it\'s simple average"
+    x = acceptInput1(name)
     avgAnswer = sum(x)/len(x)
     print("The average of {0} = {1:.2f}".format(x, avgAnswer))
 
@@ -226,7 +243,8 @@ def simple_avg():
 
 def geometric_avg():
     
-    x = acceptInput1()
+    name = "find it\'s geometric mean"
+    x = acceptInput1(name)
     multvals = reduce(lambda x, y: x*y, x)
     gmeanAnswer = multvals ** (1/len(x))
     print("The geometric mean of {0} = {1:.2f}".format(x, gmeanAnswer))
@@ -234,8 +252,9 @@ def geometric_avg():
 #===========================================================================#
 
 def harmonic_avg():
-    
-    x = acceptInput1()
+
+    name = "find it\'s harmonic mean"
+    x = acceptInput1(name)
     a = list(map(lambda x : 1.0/x, x))
     harmMean = len(x)/sum(a)
     print("The harmonic mean of {0} = {1:.2f}".format(x, harmMean))
@@ -247,7 +266,9 @@ def weighted_avg():
     
     print("Hey! we are accepting two different sets of values here!!")
     print("We are starting with the weights!!! so, let's gooo.....")
-    x = acceptInput1()
+
+    name = "find it\'s weighted average"
+    x = acceptInput1(name)
     print('''
     Good! You've done a great job!!
     Now let's accept your occurences
@@ -317,27 +338,45 @@ def quadroot():
     print("The roots of the equation ({0}x^2) + ({1}x) + ({2}) are {3:.2f} and {4:.2f}".format(a,d,r,root1,root2))
     
 starter = True
+retry = True
 while starter:
     a = decor()
-    
     if a == 1:
-        add()
+        while retry:
+            add()
+            retry = recurse()
     elif a == 2:
-        subtract()
+        while retry:
+            subtract()
+            retry = recurse()
     elif a == 3:
-        multiply()
+        while retry:
+            multiply()
+            retry = recurse()
     elif a == 4:
-        divide()
+        while retry:
+            divide()
+            retry = recurse()
     elif a == 5:
-        simple_avg()
+        while retry:
+            simple_avg()
+            retry = recurse()
     elif a == 6:
-        geometric_avg()
+        while retry:
+            geometric_avg()
+            retry = recurse()
     elif a == 7:
-        harmonic_avg()
+        while retry:
+            harmonic_avg()
+            retry = recurse()
     elif a == 8:
-        weighted_avg()
+        while retry:
+            weighted_avg()
+            retry = recurse()
     elif a == 9:
-        quadroot()
+        while retry:
+            quadroot()
+            retry = recurse()
     
     print('''
     Do you want to perform another operation?''')
@@ -346,6 +385,7 @@ while starter:
     
     if decision.lower().startswith("y"):
         starter = True
+        retry = True
     else:
         print('''
         Thanks for visiting!!!
