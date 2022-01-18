@@ -1,4 +1,6 @@
-S/N        NAME
-1	   Tech Buddies
-2	   Shola Oyinloye
-3	   Kareem Basit Adeniyi
+## S/N    ## NAME
+	    ### Tech Buddies
+      
+   1	   Shola Oyinloye
+   2	   Kareem Basit Adeniyi
+   3       Hassanat Awodipe
